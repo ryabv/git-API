@@ -9,6 +9,7 @@ const readline = require('readline').createInterface({
 });
 const rimraf = require('rimraf');
 const { exec } = require('child_process');
+const { spawn } = require('child_process');
 const app = express();
 
 app.listen(3000);
@@ -42,22 +43,44 @@ app.get('/api/repos', (req, res) => {
 	fs.readdir(reposDir, (err, files) => {
 		if (err) { 
 			res.send(err);
-		} else { // TODO: добавить проверку на папку
-			res.json({ data: files });
+		} else {
+			let repos = [];
+			files.map((file, i, arr) => {
+				arr[i] = new Promise((resolve, reject) => {
+					fs.stat(path.join(__dirname, reposDir, file), (err, stats) => {
+						if (stats.isDirectory()) {
+							repos.push(file);
+						}
+						resolve();
+					});
+				});
+			});
+
+			Promise.all(files).then(value => res.json({ data: repos }));		
 		}
 	});
 });
 
 
 // Возвращает массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием
-app.get('/api/repos/:repositoryId([a-zA-Z|\-]+)/commits/:commitHash', (req, res) => {
-	exec(`cd ${reposDir}/${req.params.repositoryId} && git checkout ${req.params.commitHash} && git log --pretty=tformat:"%H--%s--%ad"`, (err, out) => {
-		if (err) {
-			res.send(err);
-		} else {
-			out = out.trim().split('\n').map(el => el.split('--'));
-			res.json({ data: out });
-		}
+app.get('/api/repos/:repositoryId/commits/:commitHash', (req, res) => {
+
+	let result = [];
+	let commits = spawn(`cd ${reposDir}/${req.params.repositoryId} && git checkout ${req.params.commitHash} -q && git --no-pager log --pretty=tformat:"%H--%s--%ad"`, {
+		shell: true
+	});
+
+	commits.stderr.on('data', data => {
+		res.send("STDERR:", data.toString());
+	});
+
+	commits.stdout.on('data', data => {
+		data = data.toString().trim().split('\n').map(el => el.split('--'));
+		result.push(...data);
+	});
+
+	commits.on('close', () => {
+		res.json({data: result});
 	});
 });
 
@@ -72,24 +95,34 @@ app.get('/api/repos/:repositoryId/commits/:commitHash/diff', (req, res) => {
 				out = out.slice(out.indexOf('parent') + 7, out.indexOf('parent') + 47); //40 - длина SHA1-хеша
 				resolve(out);
 			}
-
 		});
 	})
 	.then(parentHash => {
-		exec(`cd ${reposDir}/${req.params.repositoryId} && git diff ${parentHash} ${req.params.commitHash}`, (err, out) => {
-			if (err) {
-				res.send(err);
-			} else {
-				res.json({ data: out });
-			}
-		});
+
+			let result = '';
+			let commitsDiff = spawn(`cd ${reposDir}/${req.params.repositoryId} && git diff ${parentHash} ${req.params.commitHash}`, {
+				shell: true
+			});
+
+			commitsDiff.stderr.on('data', data => {
+				res.send("STDERR:", data.toString());
+			});
+
+			commitsDiff.stdout.on('data', data => {
+				data = data.toString();
+				result += data;
+			});
+
+			commitsDiff.on('close', () => {
+				res.json({data: result});
+			});
 	})
 	.catch(err => res.send(err));
 });
 
 
 // Возвращает содержимое репозитория по названию ветки (или хэшу комита)
-app.get('/api/repos/:repositoryId/tree/:commitHash/:path([a-z0-9\/]+)*|/api/repos/:repositoryId/tree/:commitHash([a-z0-9]+)*|/api/repos/:repositoryId([a-z0-9\-]+)', (req, res) => {
+app.get('/api/repos/:repositoryId/tree/:commitHash/:path([a-zA-Z0-9\-\/\.]+)*|/api/repos/:repositoryId/tree/:commitHash([a-zA-Z0-9\/|\.|\-|\_]+)*|/api/repos/:repositoryId', (req, res) => {
 	let path = req.params.path ? `${req.params.path}` : ''; // проверка на существование path
 	let hash = req.params.commitHash ? `${req.params.commitHash}` : 'master'; // проверка на существование hash
 
@@ -106,7 +139,7 @@ app.get('/api/repos/:repositoryId/tree/:commitHash/:path([a-z0-9\/]+)*|/api/repo
 		fs.readdir(`${reposDir}/${req.params.repositoryId}/${path}`, (err, files) => {
 			if (err) { 
 				res.send(err);
-			} else { // TODO: добавить проверку на папку
+			} else {
 				res.json({ data: files });
 			}
 		});
@@ -116,9 +149,11 @@ app.get('/api/repos/:repositoryId/tree/:commitHash/:path([a-z0-9\/]+)*|/api/repo
 
 
 // Возвращает содержимое конкретного файла, находящегося по пути pathToFile в ветке (или по хэшу коммита)
-app.get('/api/repos/:repositoryId/blob/:commitHash/:pathToFile([a-zA-Z0-9\/|\.|\-|\_]+)*', (req, res) => {
+app.get('/api/repos/:repositoryId/blob/:commitHash/:pathToFile([a-zA-Z0-9\-\/\.\_]+)*', (req, res) => {
 	exec(`cd ${reposDir}/${req.params.repositoryId} && git checkout ${req.params.commitHash}`, (err, out) => {
-		if (err) res.send(err);
+		if (err) {
+			res.send(err);
+		}
 
 		let file = fs.createReadStream(`${reposDir}/${req.params.repositoryId}/${req.params.pathToFile}`);
 		file.pipe(res);
@@ -146,7 +181,7 @@ app.post('/api/repos', (req, res) => {
 
 
 // BONUS Возвращает заданный через :range массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием
-app.get('/api/repos/:repositoryId([a-zA-Z|\-]+)/commits/:commitHash/pagination/:range', (req, res) => {
+app.get('/api/repos/:repositoryId/commits/:commitHash/pagination/:range', (req, res) => {
 	let range = req.params.range.split('-'); // получаем диапазон
 
 	if (range.length === 1) { // если указано одно число, то выдать список длинною в это число
@@ -200,7 +235,7 @@ app.get('/api/repos/:repositoryId([a-zA-Z|\-]+)/commits/:commitHash/pagination/:
 
 // SUPER BONUS HTTP-запрос для подсчета символов в репозитории, возвращает объект, в котором ключ - это символ, а значение - количество таких символов в репозитории
 app.get('/api/repos/:repositoryId/symbols', (req, res) => {
-	let obj = {b: 1};
+	let obj = {};
 
 	new Promise((resolve, reject) => {
 		checkRepo(obj, req.params.repositoryId, '') // Заходим в папку
@@ -232,13 +267,12 @@ function checkRepo(obj, repo, subPath) {
 				});
 
 				files = files.filter(el => el !== '.git');
-				
 				resolve(files);
 			}
 		});
 	})
 	.then(files => {
-		files.map((file, i, arr) => {
+		files.map((file, i, arr) => { // делаем из каждого файла промис и закидывем их в Promise.all
 			arr[i] = new Promise((resolve, reject) => { 
 			  	fs.stat(path.join(__dirname, reposDir, repo, subPath, file), (err, stats) => {
 					if (stats.isFile()) {
@@ -262,11 +296,8 @@ function checkRepo(obj, repo, subPath) {
 				});
 			}); 
 		});
-		
 
-		return Promise.all(files).then(value => {
-			return value;
-		});
+		return Promise.all(files);
 	})
 	.catch(err => {
 		obj.err = err;
