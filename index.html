@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>API</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			font-size: 18px;
+			line-height: 1.4;
+		}
+
+		dt {
+			margin-top: 2.5rem;
+			font-weight: bold;
+			word-break: break-all;
+		}
+
+		code {
+			font-weight: bold;
+		}
+
+		.container {
+			width: 60vw;
+			margin: 0 auto;
+			font-family: sans-serif;
+		}
+
+		.get {
+			color: #3498DB;
+		}
+
+		.delete {
+			color: #E74C3C;
+		}
+
+		.post {
+			color: #22A471;
+		}
+
+		@media (max-width: 576px) {
+			body {
+				font-size: 14px;
+			}
+
+			.container {
+				width: 90vw;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<h1>Привет, это сервер на Node.js, который предоставляет клиенту API для работы с git репозиториями.</h1>
+
+		<dl>
+			<dt><span class="get">GET</span> /api/repos</dt>
+			<dd>Возвращает массив репозиториев, которые имеются в папке.</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId/commits/:commitHash</dt>
+			<dd>Возвращает массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием.</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId/commits/:commitHash/diff</dt>
+			<dd>Возвращает diff коммита в виде строки.</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId(/tree/:commitHash/:path)</dt>
+			<dd>Возвращает содержимое репозитория по названию ветки (или хэшу комита). То, что в скобках - опционально, если отсутствует и branchName, и path - отдать актуальное содержимое в корне в главной ветке репозитория.</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId/blob/:commitHash/:pathToFile</dt>
+			<dd>Возвращает содержимое конкретного файла, находящегося по пути pathToFile в ветке (или по хэшу коммита) branchName.</dd>
+			<dt><span class="delete">DELETE</span> /api/repos/:repositoryId</dt>
+			<dd>Безвозвратно удаляет репозиторий.</dd>
+			<dt><span class="post">POST</span> /api/repos + { url: ‘repo-url’ }</dt>
+			<dd>Добавляет репозиторий в список, скачивает его по переданной в теле запроса ссылке и добавляет в папку со всеми репозиториями</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId/commits/:commitHash/pagination/:range</dt>
+			<dd>Возвращает заданный через :range массив коммитов в данной ветке (или хэше коммита) вместе с датами их создания и названием. Range должен быть вида <code>from-to</code>, например, <code>10-20</code>. Если ввести только одно число, например, <code>100</code>, то значение <code>from</code> будет приравнено нулю, и будет выведено 100 коммитов.</dd>
+			<dt><span class="get">GET</span> /api/repos/:repositoryId/symbols</dt>
+			<dd>HTTP-запрос для подсчета символов в репозитории, возвращает объект, в котором ключ - это символ, а значение - количество таких символов в репозитории.</dd>
+		</dl>
+	</div>
+</body>
+</html>
