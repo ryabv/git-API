@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>1.5</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body class="Body">
+
+		<!-- Main-header -->
+		<header class="Main-header">
+			<div class="Container Container_flex">
+				<a href="/" class="Main-header-El Main-header-El_m_right">
+					<img class="Logo Main-header__Logo" src="./img/logo.svg" alt="Yandex Arcanum">
+				</a>
+				<button class="Button Button_arrow Button_arrow_down Button_bb Main-header-El"><b>Repository</b> Arc</button>
+			</div>
+		</header>
+		<!-- Main-header END -->
+
+		<main class="Body-Main">
+			<div class="Container">
+
+				<!-- Breadcrumbs -->
+				<section class="Breadcrumbs">
+					<a class="Breadcrumbs-Link" href="#">root</a>
+					<a class="Breadcrumbs-Link" href="#">trunk</a>
+					<a class="Breadcrumbs-Link" href="#">arcadia</a>
+					<a class="Breadcrumbs-Link" href="#">addapter</a>
+					<a class="Breadcrumbs-Link Breadcrumbs-Link_active">ya.make</a>
+				</section>
+				<!-- Breadcrumbs END -->
+
+				<!-- Page-header -->
+				<header class="Page-header">
+					<h1 class="Page-header-Title">ya.make <button class="Button Button_arrow Button_arrow_down Button_color_grey Button_font_inherit Button_weight_normal Page-header-Button">trunk</button></h1>
+					<p class="Page-header-Text">Last commit <a class="Link" href="#">c4d248</a> on <a href="#" class="Link">20 Oct 2017, 12:24</a> by <span class="Name">robot-srch-releaser</span></p>
+					<div class="Tabs Page-header-Tabs">
+						<a class="Tabs-Link Tabs-Link_active" href="#">Details</a>
+						<a class="Tabs-Link" href="#">History</a>
+					</div>
+				</header>
+				<!-- Page-header END -->
+
+				<!-- History -->
+				<section class="Main-content Main-content_vertp_16">
+
+					<article class="File">
+						<header class="File-Header">
+							<h1 class="File-Title File-Title_before_code">ya.make <span class="File-Size">(4 347 bytes)</span></h1>
+							<a href="#" class="File-Download" title="Download">
+								<i class="fas fa-download File-Download-icon"></i>
+							</a>
+						</header>
+						<div class="File-Content">
+							<table class="File-Content-table Code-Block">
+							    <tbody>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 0</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_color_transp-blue">#!/usr/bin/env python</span>    </pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 1</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">import</span> os</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 2</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">import</span> sys</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 3</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">import</span> platform</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 4</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">import</span> json</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 5</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 6</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">URLS = [<span class="Code Code_color_cyan">'https://proxy.sandbox.yandex-team.ru/453818264'</span>, <span class="Code Code_color_cyan">'http://storage-int.mds.yandex.net/get-sandbox/110738/by_platform.json.453815347'</span>]</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 7</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">MD5 = <span class="Code Code_color_cyan">'7f5a85f9c28d35c3a76d8cea7af51106'</span>    </pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker"> 8</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">9</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">RETRIES = 5</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">10</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">HASH_PREFIX = 10</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">11</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">12</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">HOME_DIR = os.path.expanduser(<span class="Code Code_color_cyan">'~'</span>)</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">13</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">14</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">15</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">def</span> <span class="Code Code_color_cyan Code_weight_bold">create_dirs</span>(path):</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">16</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">try</span>:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">17</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        os.makedirs(path)</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">18</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">except</span> OSError <span class="Code Code_weight_bold">as</span> e:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">19</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        <span class="Code Code_weight_bold">import</span> errno</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">20</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">21</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        <span class="Code Code_weight_bold">if</span> e.errno != errno.EEXIST:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">22</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">            <span class="Code Code_weight_bold">raise</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">23</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">24</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">return</span> path</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">25</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">26</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">27</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">def</span> <span class="Code Code_color_cyan Code_weight_bold">misc_root</span>():</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">28</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">return</span> create_dirs(os.getenv(<span class="Code Code_color_cyan">'YA_CACHE_DIR'</span>) <span class="Code Code_weight_bold">or</span> os.path.join(HOME_DIR, <span class="Code Code_color_cyan">'.ya'</span>))</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">29</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">30</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">31</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">def</span> tool_root():</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">32</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">33</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">34</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code Code_weight_bold">def</span> <span class="Code Code_color_cyan Code_weight_bold">create_dirs</span>(path):</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">35</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">try</span>:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">36</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        os.makedirs(path)</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">37</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    <span class="Code Code_weight_bold">except</span> OSError as e:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">38</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        <span class="Code Code_weight_bold">import</span> errno</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">39</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">40</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        <span class="Code Code_weight_bold">if</span> e.errno != errno.EEXIST:</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">41</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">            <span class="Code Code_weight_bold">raise</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">42</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    </pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">43</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        <span class="Code Code_weight_bold">return</span> path</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">44</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    </pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num Code-Num_color_darker">45</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							    </tbody>
+							</table>
+						</div>
+					</article>
+
+				</section>
+				<!-- History END -->
+			</div>
+		</main>
+
+		<!-- Main-footer -->
+		<footer class="Main-footer Body-Footer">
+			<div>
+			<p class="Main-footer-Text Main-footer-Text_left">Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021</p>
+			</div>
+			<div class="Main-footer_right">
+				<p class="Main-footer-Text Main-footer-Text_right">UI: 0.1.15</p>
+				<p class="Main-footer-Text Main-footer-Text_right">©&#160;2007&#x2060;—&#x2060;2019 <a class="Link" href="#">Yandex</a></p>
+			</div>
+		</footer>
+		<!-- Main-footer END -->
+
+	</body>
+</html>

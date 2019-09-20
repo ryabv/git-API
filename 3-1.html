@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="UTF-8">
+		<title>3.1</title>
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css" integrity="sha384-rtJEYb85SiYWgfpCr0jn174XgJTn4rptSOQsMroFBPQSGLdOC5IbubP6lJ35qoM9" crossorigin="anonymous">
+		<link href="https://fonts.googleapis.com/css?family=PT+Mono&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="./style.css">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	</head>
+	<body class="Body">
+
+		<!-- Main-header -->
+		<header class="Main-header">
+			<div class="Container Container_flex">
+				<a href="/" class="Main-header-El Main-header-El_m_right">
+					<img class="Logo Main-header__Logo" src="./img/logo.svg" alt="Yandex Arcanum">
+				</a>
+				<button class="Button Button_arrow Button_arrow_down Button_bb Main-header-El"><b>Repository</b> Arc</button>
+			</div>
+		</header>
+		<!-- Main-header END -->
+
+		<main class="Body-Main">
+			<div class="Container">
+
+				<!-- Page-header -->
+				<header class="Page-header">
+					<div class="Page-header-Link-block">
+						<a class="Link Link_mobile Link_before_back Page-header-Link" href="#">Back</a>
+						<a class="Link Link_block Link_before_files Page-header-Link" href="#">Show files at r4318347</a>
+					</div>
+					<h1 class="Page-header-Title Page-header-Title_mr">DEVTOOLS-4599: Add option to add extra whitespace between projects</h1>
+					<p class="Page-header-Text"><a class="Link" href="#">s324e8</a> by <span class="Name">woodcutter</span>, 4 s ago</p>
+				</header>
+				<!-- Page-header END -->
+
+				<!-- History -->
+				<section class="Main-content Main-content_vertp_22">
+
+					<article class="File">
+						<header class="File-Header File-Header_commit">
+							<div class="File-Name">
+								<span class="File-M">M</span><h1 class="File-Title File-Title_before_commit">/trunk/arcadia/devtools/intellij/src/main/java/ru/yandex/devtools/intellij/arc/client/ArcCli.java</h1>
+							</div>
+							<div class="File-Meta">
+								<div>
+									<span class="File-Plus-code">+100</span>
+									<span class="File-Minus-code">-81</span>
+								</div>
+								<a class="File-External-link" href="#"><i class="fas fa-external-link-square-alt"></i></a>
+							</div>
+						</header>
+						<div class="File-Content">
+							<div class="File-Content-info">
+								<span>@@ -270, 160  +270, 161 @@</span>
+								<div class="File-Content-nav">
+									<a class="File-Content-nav-link File-Content-nav-link_up" href="#">Below 20 lines</a>
+									<a class="File-Content-nav-link File-Content-nav-link_available File-Content-nav-link_down" href="">Above 20 lines</a>
+								</div>
+							</div>
+							<table class="File-Content-table Code-Block">
+							    <tbody>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">1</td>
+							            <td class="Code-Num Code-Num_sec-col">1</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">package ru.yandex.devtools.intellij.arc.client;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">2</td>
+							            <td class="Code-Num Code-Num_sec-col">2</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">3</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.ArrayList;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">4</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.Collection;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">5</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.List;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">6</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">3</td>
+							            <td class="Code-Num Code-Num_sec-col">7</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.openapi.diagnostic.Logger;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col"> 8</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.openapi.project.Project;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">4</td>
+							            <td class="Code-Num Code-Num_sec-col">9</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.openapi.vcs.FilePath;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">5</td>
+							            <td class="Code-Num Code-Num_sec-col">10</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.openapi.vcs.VcsException;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">6</td>
+							            <td class="Code-Num Code-Num_sec-col">11</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.openapi.vfs.VirtualFile;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">7</td>
+							            <td class="Code-Num Code-Num_sec-col">12</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> com.intellij.vcsUtil.VcsUtil;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">13</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> org.jetbrains.annotations.NotNull;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">14</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">8</td>
+							            <td class="Code-Num Code-Num_sec-col">15</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> ru.yandex.devtools.intellij.arc.ArcContext;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">9</td>
+							            <td class="Code-Num Code-Num_sec-col">16</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> ru.yandex.devtools.intellij.arc.ArcRevisionNumber;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">10</td>
+							            <td class="Code-Num Code-Num_sec-col">17</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> ru.yandex.devtools.intellij.arc.ArcStatus;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_added">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">18</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> ru.yandex.devtools.intellij.arc.ui.ArcResetDialog;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">11</td>
+							            <td class="Code-Num Code-Num_sec-col">19</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_deleted">
+							            <td class="Code-Num">12</td>
+							            <td class="Code-Num Code-Num_sec-col"></td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.ArrayList;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_deleted">
+							            <td class="Code-Num">13</td>
+							            <td class="Code-Num Code-Num_sec-col"></td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.Collection;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_deleted">
+							            <td class="Code-Num">14</td>
+							            <td class="Code-Num Code-Num_sec-col"></td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">import</span> java.util.List;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line Code-Line_deleted">
+							            <td class="Code-Num">15</td>
+							            <td class="Code-Num Code-Num_sec-col"></td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">16</td>
+							            <td class="Code-Num Code-Num_sec-col">20</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_green">/**</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">17</td>
+							            <td class="Code-Num Code-Num_sec-col">21</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_green"> * @author Dmitry Andreev &lt;a href="mailto:AndreevDm@yandex-team.ru"&gt;&lt;/a&gt;</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num"></td>
+							            <td class="Code-Num Code-Num_sec-col">22</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_green"> * @date 11/10/2018</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">18</td>
+							            <td class="Code-Num Code-Num_sec-col">23</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_green">*/</span></pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">19</td>
+							            <td class="Code-Num Code-Num_sec-col">24</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre"><span class="Code_color_blue">public</span> <span class="Code_color_red">ArcCli</span>(<span class="Code_color_red">String</span> arcBinaryPath) {</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">20</td>
+							            <td class="Code-Num Code-Num_sec-col">25</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">        this.arcBinaryPath = arcBinaryPath;</pre>
+							            </td>
+							        </tr>
+							        <tr class="Code-Line">
+							            <td class="Code-Num">21</td>
+							            <td class="Code-Num Code-Num_sec-col">26</td>
+							            <td class="Code-String">
+							                <pre class="Code-String-pre">    }</pre>
+							            </td>
+							        </tr>
+							    </tbody>
+							</table>
+							<div class="File-Content-info">
+								<span>@@ -270, 160  +270, 161 @@</span>
+								<div class="File-Content-nav">
+									<a class="File-Content-nav-link File-Content-nav-link_up" href="#">Below 20 lines</a>
+									<a class="File-Content-nav-link File-Content-nav-link_available File-Content-nav-link_down" href="">Above 20 lines</a>
+								</div>
+							</div>
+						</div>
+					</article>
+
+				</section>
+				<!-- History END -->
+			</div>
+		</main>
+
+		<!-- Main-footer -->
+		<footer class="Main-footer Body-Footer">
+			<div>
+			<p class="Main-footer-Text Main-footer-Text_left">Trade secrets of Yandex LLC. 16, Lev Tolstoy Str., Moscow, Russia, 119021</p>
+			</div>
+			<div class="Main-footer_right">
+				<p class="Main-footer-Text Main-footer-Text_right">UI: 0.1.15</p>
+				<p class="Main-footer-Text Main-footer-Text_right">©&#160;2007&#x2060;—&#x2060;2019 <a class="Link" href="#">Yandex</a></p>
+			</div>
+		</footer>
+		<!-- Main-footer END -->
+
+	</body>
+</html>
