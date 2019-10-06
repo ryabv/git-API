@@ -29,12 +29,12 @@ app.use(function(req, res, next) {
 
 
 // получение папки с репозиториями
-// например, node app --repo=./test
+// например, node app --repo=./repos
 let argv = parseArgs(process.argv.slice(2));
 
 let reposDir = argv.repo;
 if (!reposDir) { // если изначально в строке не ввели путь, то попросить ввести через REPL
-    readline.question('Пожалуйста, введите путь к папке с репозиториями (например, ./test): ', repo => {
+    readline.question('Пожалуйста, введите путь к папке с репозиториями (например, ./repos): ', repo => {
         reposDir = repo;
         readline.close();
     });
